@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Player Card Generator</title>
+</head>
+<body>
+    <div class="main-container">
+
+        <div class="controls">
+            <h2>Build Your Player</h2>
+
+            <label for="nameInput">Player Name:</label>
+            <input type="text" id="nameInput" placeholder="e.g. Messi" maxlength="15">
+
+            <label for="posInput">Position:</label>
+            <select id="posInput">
+                <option value="CF">CF (Center Forward)</option>
+                <option value="CMF">CMF (Central Midfielder)</option>
+                <option value="CB">CB (Center Back)</option>
+                <option value="GK">GK (Goal Keeper)</option>
+            </select>
+
+            <label for="ovrInput">Overall Rating:</label>
+            <input type="number" id="ovrInput" value="99" min="1" max="99">
+            
+            <label for="paceInput">Pace:</label>
+            <input type="number" id="paceInput" value="99" min="1" max="99">
+
+            <label for="shootInput">Shoot:</label>
+            <input type="number" id="shootInput" value="99" min="1" max="99">
+
+            <label for="passInput">Passing:</label>
+            <input type="number" id="passInput" value="99" min="1" max="99">
+
+            <label for="defInput">Defending:</label>
+            <input type="number" id="defInput" value="99" min="1"  max="99">
+        </div>
+    </div>
+
+    <div class="card-container">
+        <div class="player-card">
+
+            <div class="card-top">
+                <div class="rating-box">
+                    <h1 id="cardOvr">99</h1>
+                    <h3 id="cardPos">CF</h3>
+                </div>
+            </div>
+
+    <div class="card-middle">
+        <h2 id="cardName">PLAYER</h2>
+    </div>
+
+    <div class="card-bottom">
+        <div class="stat">
+        <span class="stat-val" id="cardPace">95</span>
+        <span class="stat-label">PAC</span>
+        </div>
+
+        <div class="stat">
+            <span class="stat-val" id="cardShoot">98</span>
+            <span class="stat-label">SHO</span>
+        </div>
+
+        <div class="stat">
+            <span class="stat-val" id="cardPass">94</span>
+            <spam class="stat-label">PAS</spam>
+
+        </div>
+
+        <div class="stat">
+            <span class="stat-val" id="cardDef">96</span>
+            <span class="stat-label">DEF</span>
+        </div>
+    </div>
+</body>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    }
+
+    body {
+        background-color: green;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    .main-container {
+        display: flex;
+        gap: 200px;
+        background-color: green;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+
+    }
+
+    .controls {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 300px;
+    }
+
+    .controls h2 {
+        margin-bottom: 10px;
+        color: yellow;
+    }
+
+    input, select {
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        background-color: black;
+        color: white;
+    }
+
+    .player-card {
+        width: 300px;
+        height: 450px;
+        background: linear-gradient(135deg, gold, whitesmoke, gold, white, gold);
+        border-radius: 20px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        color: black;
+    }
+
+    .card-top {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .rating-box h1 {
+        font-size: 50px;
+        line-height: 1;
+    }
+
+    .rating-box h3 {
+        font-size: 24px;
+        margin-top: -5px;
+    }
+
+    .card-middle {
+        text-align: center;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+        padding-bottom: 10px;
+    }
+
+    .card-middle h2 {
+        font-size: 32px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    .card-bottom {
+        display: flex;
+        justify-content: space-around;
+        padding-top: 40px;
+    }
+
+    .stat {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .stat-val {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .stat-label {
+        font-size: 14px;
+        color: black;
+    }
+</style>
+<script>
+    const nameInput = document.getElementById('nameInput');
+    const posInput = document.getElementById('posInput');
+    const ovrInput = document.getElementById('ovrInput');
+    const paceInput = document.getElementById('paceInput');
+    const shootInput = document.getElementById('shootInput');
+    const passInput = document.getElementById('passInput');
+    const defInput = document.getElementById('defInput');
+
+    const cardName = document.getElementById('cardName');
+    const cardPos = document.getElementById('cardPos');
+    const cardOvr = document.getElementById('cardOvr');
+    const cardPace = document.getElementById('cardPace');
+    const cardShoot = document.getElementById('cardShoot');
+    const cardPass = document.getElementById('cardPass');
+    const cardDef = document.getElementById('cardDef')
+
+    function updateCard() {
+        cardName.innerText = nameInput.value || "PLAYER";
+        cardPos.innerText = posInput.value;
+        cardOvr.innerText = ovrInput.value || "0";
+        cardPace.innerText = paceInput.value || "0";
+        cardShoot.innerText = shootInput.value || "0";
+        cardPass.innerText = passInput.value || "0";
+        cardDef.innerText = defInput.value || "0";
+    }
+
+    nameInput.addEventListener('input', updateCard);
+    posInput.addEventListener('input', updateCard);
+    ovrInput.addEventListener('input', updateCard);
+    paceInput.addEventListener('input', updateCard);
+    shootInput.addEventListener('input', updateCard);
+    passInput.addEventListener('input', updateCard);
+    defInput.addEventListener('input', updateCard)
+</script>
+
+
+</html>
